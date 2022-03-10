@@ -28,8 +28,63 @@
     <script src="https://unpkg.com/mustache@latest"></script>
   </head>
   <body>
-    <h1>holy mess</h1>
-
+    <h1>Пошуковик волонтера</h1>
+    <span><i>beta 0.1</i></span>
+    <p> Єдиний інтерфейс пошуку для волонтерів та потребуючих</p>
+    FYI: Пошук працює з кількома словами тільки якщо вони зустрічаються підряд в тексті (запит "бронік львів" не знайде тексту "потрібен бронік, місто львів")
+    <p>Будь-які побажання та покращення адресуйте будь-ласка сюди (telegram): @twist522, @Yurii_Mahotskyi, @Droll </p>                                                                      
+    <div class="wrap-collabsible">
+      <input id="collapsible-info" class="toggle" type="checkbox">
+      <label for="collapsible-info" class="lbl-toggle">опис..</label>
+      <div class="collapsible-content">
+        <div class="content-inner">
+          <span style="white-space: pre-line">
+            <ul>
+              <li>проблема:</li>
+              <ul>
+                <li>волонтери та потребуючі використовують сотні ресурсів для поширення інформації, які погано підходять для цього</li>
+                <li>ТГ чати та ФБ ленти ефемерні (видно лише останнє), не підтримують пріоритетності (послідовність лінійна по часу),</li>
+                <li>видимі лише у вузьких соц бульбашках, мають дуже обмежені інструменти пошуку, поширення та трекінгу</li>
+              </ul>
+              <li>ідея та рішення:</li>
+              <ul>
+                <li>ми не можемо змусити людей перестати використовувати соц-мережі</li>
+                <li>проте ми можемо допомогти користувачам знайти потрібну інформацію швидше надаючи єдиний інтерфейс</li>
+                <li>не маючи доступу до усіх десятків і сотень груп та веб-ресурсів та не маючи часу на пошук в кожному з них</li>
+                <li>окрім часткової уніфікації доступу, це дає перспективу організації та перенаправлення хаотичного волонтерського фрілансерства
+                  в більш ефективне русло та інтеграції з потужними SCM системами (Supply Chain Management) як openboxes, ODOO, etc.</li>
+              </ul>
+              <li>аудиторія</li>
+              <ul>
+                <li>волонтери-фрілансери</li>
+                <li>потребуючі допомоги та ті хто шукає інформацію</li>
+              </ul>
+              <li>функціонал</li>
+              <ul>
+                <li>currently:</li>
+                <ul>
+                  <li>literal search in Telegram groups: poshuk_znyklyh, VolunteerTalksKyiv, AngelsOfUkraine, ArmyNeeds, medhelpinfo, opitpomoshi, huiiivoiiine, evacuationukraine, UkrzalInfo</li>
+                </ul>
+                <li>to-be-implemented:</li>
+                <ul>
+                  <li>search in:</li>
+                  <ul>
+                    <li>telegram channels</li>
+                    <li>facebook groups and profiles</li>
+                    <li>websites (aka https://kabanchik.ua/, https://helpnow.org.ua/, https://potreby.kyivcity.gov.ua/, https://platforma.volunteer.country/, etc.)</li>
+                  </ul>
+                </ul>
+                <li>filter by category</li>
+                <li>sort by time, popularity</li>
+                <li>"mark as irrelevant"</li>
+                <li>NLP methods for deep analysis of messages</li>
+              </ul>
+            </ul>
+          </span>
+        </div>
+      </div>
+    </div>
+    </p>
     <input id="search-input" title="search"/><button id="search-btn" type="button" onclick="search()">Search</button>
     <p id="searchresultsnumber"></p>
 

@@ -63,7 +63,7 @@ def _home():
 @api.route('/<path:path>')
 def _static(path):
   if os.path.isdir(safe_join(static, path)):
-    path = os.path.join(path, 'index.html')
+    path = os.path.join(path, 'search.html')
   return send_from_directory(static, path)
 
 if __name__ == '__main__':
