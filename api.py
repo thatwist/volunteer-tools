@@ -2,14 +2,17 @@ import os
 from flask import Flask, json, send_from_directory, request
 from flask.helpers import safe_join
 from telethon.sync import TelegramClient
+from dotenv import load_dotenv
+
+load_dotenv()
 
 api = Flask(__name__)
 static = safe_join(os.path.dirname(__file__), '')
 api.config['JSON_AS_ASCII'] = False
 
-name = 'twist522' 
-api_id = '9673715'
-api_hash = "c5cb33921c1e5ee10394c58a1f1a3eb1" 
+tg_name = os.getenv('TG_NAME')
+api_id = os.getenv('API_ID')
+api_hash = os.getenv('API_HASH')
 
 chats=[
     "poshuk_znyklyh",
@@ -26,7 +29,7 @@ chats=[
 @api.route('/search', methods=['GET'])
 async def get_results():
   query = request.args.get("query")
-  async with TelegramClient(name, api_id, api_hash) as client:
+  async with TelegramClient(tg_name, api_id, api_hash) as client:
     data = []
     for chat in chats:
       print(f"searching {chat}...")
