@@ -33,7 +33,7 @@ function search() {
       var template = document.getElementById('results-template').innerHTML;
       var rendered = Mustache.render(template, {results: data});
       document.getElementById('searchresults').innerHTML = rendered;
-      window.history.pushState({page: "another"}, "search: " + query, "index.html?query=" + query);
+      window.history.pushState({page: "another"}, "search: " + query, "search.html?query=" + query);
       // console.log(rendered);
     });
 }
