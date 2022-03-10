@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+  <head>
+    <title>holy mess</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js"></script>
+    <script id="results-template" type="x-tmpl-mustache">
+      {{#results}}
+      <div id='searchresult'>
+        <h2>[{{platform}}: {{channel}}] <a href='{{link}}'> {{title}}...</a> </h2>
+        <p><i>date: {{date}}</i></p>
+        <p><i>category: {{category}}</i></p>
+        <p><i>views: {{views}}</i></p>
+        <p style="white-space: pre-line">{{description}}...</p>
+      <div class="wrap-collabsible">
+        <input id="collapsible-{{platform}}-{{channel}}-{{id}}" class="toggle" type="checkbox">
+        <label for="collapsible-{{platform}}-{{channel}}-{{id}}" class="lbl-toggle">Full text</label>
+        <div class="collapsible-content">
+          <div class="content-inner">
+          <span style="white-space: pre-line">{{full_description}}</span>
+          </div>
+        </div>
+      </div>
+      </div>
+      {{/results}}
+    </script>
+    <script src="https://unpkg.com/mustache@latest"></script>
+  </head>
+  <body>
+    <h1>holy mess</h1>
+
+    <input id="search-input" title="search"/><button id="search-btn" type="button" onclick="search()">Search</button>
+    <p id="searchresultsnumber"></p>
+
+    <div id="searchresults">
+    </div>
+
+    <!-- <address> <a href="mailto:twist522@gmail.com">Yuri Ostapchuk</a> </address> -->
+  </body>
+</html>
