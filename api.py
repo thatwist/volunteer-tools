@@ -1,4 +1,5 @@
 import os
+import flask
 from flask import Flask, send_from_directory, request
 import json
 from flask.helpers import safe_join
@@ -44,8 +45,6 @@ async def teleQuery(query = None, limit = None):
         if not msg.get("message"):
           continue
         msg_dict = {x: msg[x] for x in ["id", "message", "views", "date"]}
-        if msg_dict["views"] is None:
-          msg_dict[""]
         msg_dict["channel"]=chat
         msg_dict["ts"]=msg_dict["date"].timestamp()
         msg_dict["platform"]="tg-channel"
@@ -75,7 +74,7 @@ def dump():
 async def get_results():
   query = request.args.get("query")
   data = await teleQuery(query)
-  return json.dumps(data)
+  return flask.json.dumps(data)
 
 @api.route('/')
 def _home():
