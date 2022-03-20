@@ -28,6 +28,28 @@ chats=[
     "UkrzalInfo"
 ]
 
+
+# todo separate src file
+from dataclasses import dataclass
+
+@dataclass
+class Post:
+  """ telegram message, facebook post, scraped website post, etc """
+  title: str
+  date: str
+  ts: float
+  category: str
+  channel: str
+  platform: str
+  post_id: int
+  views: int
+  description: str
+  message: str
+  link: str
+
+# todo abstractions:
+# scraper, analyzer, channel
+
 async def teleQuery(query = None, limit = None):
   async with TelegramClient(tg_name, api_id, api_hash) as client:
     data = []
@@ -61,7 +83,7 @@ async def teleQuery(query = None, limit = None):
     return data
 
 async def teleDump():
-  data = await teleQuery(query = None, limit = 100)
+  data = await teleQuery(query = None, limit = 1000)
   with open("dump.json",'w') as f:
     f.write(json.dumps(data, indent=4, sort_keys=True, default=str, ensure_ascii=False))
 
