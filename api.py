@@ -69,6 +69,7 @@ async def teleQuery(query = None, limit = None):
         msg_dict = {x: msg[x] for x in ["id", "message", "views", "date"]}
         msg_dict["channel"]=chat
         msg_dict["ts"]=msg_dict["date"].timestamp()
+        msg_dict["date_bucket"] = date_bucket(msg_dict["date"].replace(tzinfo=None))
         msg_dict["platform"]="tg-channel"
         msg_dict["category"]="other"
         msg_dict["post_id"] = msg_dict["id"]
@@ -81,6 +82,27 @@ async def teleQuery(query = None, limit = None):
         data.append(msg_dict)
         #print(msg_dict)
     return data
+
+from datetime import timedelta
+from datetime import datetime
+from datetime import date
+def date_bucket(date: datetime) -> int:
+  #today = datetime.combine(date.today(), datetime.min.time())
+  now = datetime.now()
+  _1h = now - timedelta(hours=1)
+  _24h = now - timedelta(days=1)
+  _3d = now - timedelta(days=3)
+  _7d = now - timedelta(days=7)
+  if date > _1h:
+    return 1
+  elif date < _1h and date > _24h:
+    return 24
+  elif date < _24h and date > _3d:
+    return 72
+  elif date < _3d and date > _7d:
+    return 168
+  elif date < _7d:
+    return 1000
 
 async def teleDump():
   data = await teleQuery(query = None, limit = 1000)
