@@ -1,3 +1,4 @@
 telethon==1.24.0
 flask[async]==2.0.3
 python-dotenv==0.19.2
+typesense~=0.13.1
