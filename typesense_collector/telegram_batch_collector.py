@@ -23,8 +23,8 @@ def telegram_itr_msg_to_post(msg: Message) -> Post:
 
 if __name__ == '__main__':
 
-    chats = ["AngelsOfUkraine", "VolunteerTalksKyiv"]
-    # chats = [-1001613584371, -1001601141641] # also works with chat IDs
+    # chats = ["AngelsOfUkraine", "VolunteerTalksKyiv"] # can be used instead of ids
+    chats = [-1001613584371, -1001601141641]
 
     load_dotenv()
 
