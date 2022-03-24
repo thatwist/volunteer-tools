@@ -1,30 +1,46 @@
 import os
-from datetime import datetime
 
 from dotenv import load_dotenv
 from telethon import TelegramClient
-
-from model.post import Post
 from telethon.tl.types import Message
 
+from api import date_bucket
+from model.post import Post
 from typesense_schema.post import posts_schema
 from typesense_utils.typesense_utils import init_typesense_client, delete_collection_if_exists
 
 
-def telegram_itr_msg_to_post(msg: Message) -> Post:
-    return Post(str(msg.id),
-                "telegram",
-                msg.chat.title,
-                msg.message,
-                # todo may throw an exception for private chats
-                f"https://t.me/{msg.chat.username}/{msg.id}",
-                datetime.timestamp(msg.date))
+def telegram_itr_msg_to_post(m: Message) -> Post:
+
+    return Post(m.message[0:69] if m.message is not None else None,
+                str(m.date),
+                date_bucket(m.date.replace(tzinfo=None)),
+                m.date.timestamp(),
+                "telegram_post",
+                m.chat.title,
+                "tg-channel",
+                m.id,
+                m.views,
+                m.message[0:200] if m.message is not None else None,
+                m.message,
+                f"https://t.me/{m.chat.username}/{m.id}")
 
 
 if __name__ == '__main__':
 
-    # chats = ["AngelsOfUkraine", "VolunteerTalksKyiv"] # can be used instead of ids
-    chats = [-1001613584371, -1001601141641]
+    # chats = [-1001613584371, -1001601141641]  the other way is to specify chats ids
+    chats = [
+        "poshuk_znyklyh",
+        "VolunteerTalksKyiv",
+        "AngelsOfUkraine",
+        "ArmyNeeds",
+        "medhelpinfo",
+        "opitpomoshi",
+        "huiiivoiiine",
+        "evacuationukraine",
+        "UkrzalInfo",
+        "v_tylu"
+    ]
 
     load_dotenv()
 
@@ -45,11 +61,15 @@ if __name__ == '__main__':
                 iter_msgs = takeout.iter_messages(chat, wait_time=0,
                                                   limit=int(os.getenv("TYPESENSE_BATCH_LOAD_MESSAGE_LIMIT")))
 
-                messages = map(telegram_itr_msg_to_post, iter_msgs)
-                non_empty_msgs = filter(lambda x: x.is_non_empty_message(), messages)
-                message_dicts = list(map(lambda x: x.__dict__, non_empty_msgs))
+                messages = list(map(telegram_itr_msg_to_post, iter_msgs))
 
-                import_result = typesense_client.collections[posts_schema["name"]].documents.import_(message_dicts)
+                if len(messages) > 0:
+
+                    non_empty_msgs = list(filter(lambda x: x.is_non_empty_message(), messages))
+
+                    message_dicts = list(map(lambda x: x.__dict__, non_empty_msgs))
+
+                    import_result = typesense_client.collections[posts_schema["name"]].documents.import_(message_dicts)
 
                 print(
-                    f"[TYPESENSE][IMPORT] from tg channel: {chat}, {len(message_dicts)} messages, result = {import_result}")
+                    f"[TYPESENSE][IMPORT] from tg channel: {chat}, {len(non_empty_msgs)} messages, result = {import_result}")
