@@ -70,7 +70,7 @@ if __name__ == '__main__':
                     non_empty_msgs = list(filter(lambda x: x.is_non_empty_message(), messages))
 
                     message_dicts = list(map(lambda x: x.__dict__, non_empty_msgs))
-
+		
                     import_result = typesense_client.collections[posts_schema["name"]].documents.import_(message_dicts)
 
                 print(
