@@ -12,7 +12,7 @@ class Post:
   channel: str # channel.ref
   platform: str
   post_id: int # platform+channel+post_id = unique
-  view: Optional[int] # todo - rename to views
+  views: Optional[int]
   description: str
   message: str # todo - rename to text
   # text: str
