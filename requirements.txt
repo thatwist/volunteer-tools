@@ -3,3 +3,4 @@ flask[async]==2.0.3
 python-dotenv==0.19.2
 facebook-scraper
 viberbot==1.0.11
+typesense~=0.13.1
