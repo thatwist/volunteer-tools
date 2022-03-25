@@ -9,19 +9,24 @@ class Post:
   date_bucket: int # to filter out only latest
   ts: float
   category: str
-  post_type: str # потреба чи пропозиція чи новина чи булшіт
-  platform: str
   channel: str # channel.ref
-  hidden: bool # e.g. amunition might be hidden
+  platform: str
   post_id: int # platform+channel+post_id = unique
-  views: Optional[int]
-  text: str
+  view: Optional[int] # todo - rename to views
+  description: str
+  message: str # todo - rename to text
+  # text: str
   link: str
-  geo: Optional[str] # can be list, e.g. ride from->to or multiple locations
+  hidden: bool = False # e.g. amunition might be hidden
+  post_type: str = "todo" # потреба чи пропозиція чи новина чи булшіт
+  geo: Optional[str] = None # can be list, e.g. ride from->to or multiple locations
   tags: list[str] = []
 
+  def is_non_empty_message(self):
+    return self.message is not None and self.message != ''
+
 @dataclass
-class Channel
+class Channel:
   platform: str
   ref: str # e.g. for telegram - id of the group, platform+ref = unique
   title: str

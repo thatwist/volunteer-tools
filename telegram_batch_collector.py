@@ -4,9 +4,9 @@ from dotenv import load_dotenv
 from telethon import TelegramClient
 from telethon.tl.types import Message
 
-from api import date_bucket
-from model.post import Post
 from typesense_schema.post import posts_schema
+from model.post import Post
+from api import date_bucket
 from typesense_utils.typesense_utils import init_typesense_client, delete_collection_if_exists
 
 
@@ -39,7 +39,8 @@ if __name__ == '__main__':
         "huiiivoiiine",
         "evacuationukraine",
         "UkrzalInfo",
-        "v_tylu"
+        "v_tylu",
+        "pick_up_ukraine"
     ]
 
     load_dotenv()
