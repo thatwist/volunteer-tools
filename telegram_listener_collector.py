@@ -5,10 +5,10 @@ from telethon import events, TelegramClient
 from telethon.events import NewMessage
 
 from api import date_bucket
-from model.post import Post
+from model import Post
 
-from typesense_schema.post import posts_schema
-from typesense_utils.typesense_utils import init_typesense_client
+from schema import posts_schema
+from typesense_utils import init_typesense_client
 
 
 def telegram_event_to_post(e: NewMessage.Event) -> Post:
