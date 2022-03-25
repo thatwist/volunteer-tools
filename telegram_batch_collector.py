@@ -50,10 +50,11 @@ if __name__ == '__main__':
                                              os.getenv('TYPESENSE_PROTOCOL'),
                                              os.getenv('TYPESENSE_API_KEY'))
 
-    if bool(os.getenv("TYPESENSE_DROP_AND_RECREATE_POSTS")):
-        print(f"[TYPESENSE][COLLECTION] Recreating collection: {posts_schema['name']}")
-        delete_collection_if_exists(typesense_client, posts_schema['name'])
-        typesense_client.collections.create(posts_schema)
+    # todo - this doesn't work
+    # if bool(os.getenv("TYPESENSE_DROP_AND_RECREATE_POSTS")):
+    #     print(f"[TYPESENSE][COLLECTION] Recreating collection: {posts_schema['name']}")
+    #     delete_collection_if_exists(typesense_client, posts_schema['name'])
+    #     typesense_client.collections.create(posts_schema)
 
     with TelegramClient(os.getenv('TG_NAME'), int(os.getenv('API_ID')), os.getenv('API_HASH')) as tg_client:
 
