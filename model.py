@@ -20,7 +20,7 @@ class Post:
   hidden: bool = False # e.g. amunition might be hidden
   post_type: str = "todo" # потреба чи пропозиція чи новина чи булшіт
   geo: Optional[str] = None # can be list, e.g. ride from->to or multiple locations
-  tags: list[str] = []
+  #tags: list[str] = []
 
   def is_non_empty_message(self):
     return self.message is not None and self.message != ''
@@ -34,5 +34,5 @@ class Channel:
   size: int # audience size, how many people, todo - this one is dynamic, so should be periodically updated
   # meta
   category: Optional[str] = None
-  tags: list[str] = []
+  #tags: list[str] = []
   geo: Optional[str] = None
