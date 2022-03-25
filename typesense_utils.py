@@ -15,6 +15,7 @@ def init_typesense_client(host, port, protocol, api_key):
 
 
 def delete_collection_if_exists(typesense_client, collection):
+    print(f"deleting collection {collection}")
     try:
         typesense_client.collections[collection].delete()
     except ObjectNotFound:
