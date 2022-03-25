@@ -25,9 +25,9 @@ chats=[
     "opitpomoshi",
     "huiiivoiiine",
     "evacuationukraine",
-    "UkrzalInfo"
+    "UkrzalInfo",
+    "v_tylu"
 ]
-
 
 # todo separate src file
 from dataclasses import dataclass
