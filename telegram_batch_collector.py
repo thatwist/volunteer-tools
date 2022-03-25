@@ -74,4 +74,7 @@ if __name__ == '__main__':
                     import_result = typesense_client.collections[posts_schema["name"]].documents.import_(message_dicts)
 
                 print(
-                    f"[TYPESENSE][IMPORT] from tg channel: {chat}, {len(non_empty_msgs)} messages, result = {import_result}")
+                    f"[TYPESENSE][IMPORT] from tg channel: {chat}, {len(non_empty_msgs)} messages,"
+                    # waaay too much
+                    #"result = {import_result}")
+                    )
