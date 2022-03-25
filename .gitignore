@@ -139,3 +139,4 @@ dmypy.json
 
 *.session
 .env
+nohup.out
