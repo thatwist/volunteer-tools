@@ -55,7 +55,7 @@ if __name__ == '__main__':
                                              os.getenv('TYPESENSE_PROTOCOL'),
                                              os.getenv('TYPESENSE_API_KEY'))
 
-    logging.getLogger().setLevel(logging.DEBUG)
+    logging.getLogger().setLevel(logging.INFO)
 
     if (os.getenv("TYPESENSE_DROP_AND_RECREATE_POSTS").lower() == "true"):
         print(f"[TYPESENSE][COLLECTION] Recreating collection: {posts_schema['name']}")
@@ -65,14 +65,33 @@ if __name__ == '__main__':
     with TelegramClient(os.getenv('TG_NAME'), int(os.getenv('API_ID')), os.getenv('API_HASH')) as tg_client:
         with tg_client.takeout() as takeout:
             for chat in chats:
-                iter_msgs = takeout.iter_messages(chat, wait_time=0,
-                                                  limit=int(os.getenv("TYPESENSE_BATCH_LOAD_MESSAGE_LIMIT")))
+                print(f"scraping chat '{chat}'")
+                last_post = typesense_client.collections["posts"].documents.search(search_parameters =
+                        {"q" : "*",
+                         "filter_by": f"channel:={chat}",
+                         "include_fields": "post_id",
+                         "page": 1,
+                         "per_page": 1,
+                         "limit_hits": 1,
+                         "sort_by": "post_id:desc"})
+                if len(last_post["hits"]) > 0:
+                    last_id = last_post["hits"][0]["document"]["post_id"]
+                else:
+                    last_id = 0
+                print(f"will scrape starting from msg_id={last_id}")
+
+                iter_msgs = takeout.iter_messages(chat,
+                                                  wait_time=0,
+                                                  limit=int(os.getenv("TYPESENSE_BATCH_LOAD_MESSAGE_LIMIT")),
+                                                  min_id=last_id
+                                                  )
                 messages = list(map(telegram_itr_msg_to_post, iter_msgs))
                 if len(messages) > 0:
                     non_empty_msgs = list(filter(lambda x: x.is_non_empty_message(), messages))
                     message_dicts = list(map(lambda x: x.__dict__, non_empty_msgs))
-                    import_result = typesense_client.collections[posts_schema["name"]].documents.import_(message_dicts, params={"batch_size": 100})
-                print(
-                    f"[TYPESENSE][IMPORT] from tg channel: {chat}, {len(non_empty_msgs)} messages,"
-                    + f"result = {import_result[:10]}...."
-                )
+                    import_result = typesense_client.collections["posts"].documents.import_(message_dicts, params={"batch_size": 100})
+                    print(
+                        f"[TYPESENSE][IMPORT] from tg channel: {chat}, {len(non_empty_msgs)} messages,"
+                        + f"result = {import_result[:10]}....")
+                else:
+                    print("nothing to scrape, all set")
