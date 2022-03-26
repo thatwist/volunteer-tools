@@ -1,6 +1,8 @@
 import typesense
 from typesense.exceptions import ObjectNotFound
+import logging
 
+logger = logging.getLogger(__name__)
 
 def init_typesense_client(host, port, protocol, api_key):
     return typesense.Client({
@@ -19,4 +21,5 @@ def delete_collection_if_exists(typesense_client, collection):
     try:
         typesense_client.collections[collection].delete()
     except ObjectNotFound:
+        logger.warn(f"{collection} not found")
         pass

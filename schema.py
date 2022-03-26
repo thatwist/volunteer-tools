@@ -9,12 +9,15 @@ posts_schema = {
         {'name': 'ts', 'type': 'float'},
         {'name': 'category', 'type': 'string', 'facet': True, 'locale': 'uk'},
         {'name': 'channel', 'type': 'string', 'facet': True},
+        {'name': 'channel_id', 'type': 'int32'},
+        {'name': 'channel_title', 'type': 'string', 'locale': 'uk'},
         {'name': 'platform', 'type': 'string', 'facet': True},
         {'name': 'post_id', 'type': 'int32'},
         {'name': 'views', 'type': 'int32', "optional": True},
         {'name': 'description', 'type': 'string', 'locale': 'uk'},
         {'name': 'message', 'type': 'string', 'locale': 'uk'},
         {'name': 'link', 'type': 'string'},
+        {'name': 'author', 'type': 'string', 'optional': True},
 
     ],
     "default_sorting_field": "ts"

@@ -10,6 +10,8 @@ class Post:
   ts: float
   category: str
   channel: str # channel.ref
+  channel_id: int # channel.ref
+  channel_title: str # channel.ref
   platform: str
   post_id: int # platform+channel+post_id = unique
   views: Optional[int]
@@ -17,6 +19,7 @@ class Post:
   message: str # todo - rename to text
   # text: str
   link: str
+  author: Optional[str]
   hidden: bool = False # e.g. amunition might be hidden
   post_type: str = "todo" # потреба чи пропозиція чи новина чи булшіт
   geo: Optional[str] = None # can be list, e.g. ride from->to or multiple locations

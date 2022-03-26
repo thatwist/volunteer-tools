@@ -30,21 +30,21 @@ def telegram_event_to_post(e: NewMessage.Event) -> Post:
 if __name__ == '__main__':
     # chat ids
     #    chats = [-1001613584371, -1001601141641]
-    chats = [-1595917579]
-#    chats = [
-#	"coor_me",
-#        "poshuk_znyklyh",
-#        "VolunteerTalksKyiv",
-#        "AngelsOfUkraine",
-#        "ArmyNeeds",
-#        "medhelpinfo",
-#        "opitpomoshi",
-#        "huiiivoiiine",
-#        "evacuationukraine",
-#        "UkrzalInfo",
-#        "v_tylu",
-#        "pick_up_ukraine"
-#    ]
+    # chats = [-1595917579]
+    chats = [
+       "coor_me",
+       "poshuk_znyklyh",
+       "VolunteerTalksKyiv",
+       "AngelsOfUkraine",
+       "ArmyNeeds",
+       "medhelpinfo",
+       "opitpomoshi",
+       "huiiivoiiine",
+       "evacuationukraine",
+       "UkrzalInfo",
+       "v_tylu",
+       "pick_up_ukraine"
+    ]
     print('before chats')
     load_dotenv()
 
