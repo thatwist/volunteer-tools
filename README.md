@@ -44,3 +44,7 @@ Examples for telegram/typesense/etc clients:
 
 - how to find telegram chat id (required for listener collector) 
 - how to search in typesense (required for future API) 
+
+## to clean some old documents
+
+    curl -H "X-TYPESENSE-API-KEY: <api-key>" -X DELETE "https://typesense.uall.me:8108/collections/posts/documents?q=*&filter_by=ts:<1645734541"

@@ -113,6 +113,9 @@ if __name__ == '__main__':
         "vinnytskaODA",
         "volynskaODA",
         "zak_help",
+        "lobbyx",
+        "kiber_oborona_ua",
+        "lobbyxIT"
     ]
 
     load_dotenv()
