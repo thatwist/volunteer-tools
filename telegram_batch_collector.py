@@ -35,8 +35,12 @@ from itertools import islice
 # to batch collection into buckets, typesense timeouts on importing big collections
 def batcher(iterable, batch_size):
     iterator = iter(iterable)
-    while batch := list(islice(iterator, batch_size)):
-        yield batch
+    while True:
+        batch = list(islice(iterator, batch_size))
+        if len(batch) > 0:
+            yield batch
+        else:
+            return
 
 if __name__ == '__main__':
 
