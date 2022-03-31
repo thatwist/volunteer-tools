@@ -174,7 +174,10 @@ if __name__ == '__main__':
         typesense_client.collections.create(posts_schema)
 
     with TelegramClient(os.getenv('TG_NAME'), int(os.getenv('API_ID')), os.getenv('API_HASH')) as tg_client:
-        with tg_client.takeout() as takeout:
+        # turning takeout off, it's not required as job runs incrementally and msgs increments are small
+        # only when we onboard new chat, the full takeout is required but it's fine in terms of performance
+        # but when it's on, it may require you wait 24h after TG session invalidation
+        # with tg_client.takeout() as takeout:
             for chat in chats:
                 print(f"scraping chat '{chat}'")
                 last_post = typesense_client.collections["posts"].documents.search(search_parameters =
@@ -191,7 +194,7 @@ if __name__ == '__main__':
                     last_id = 0
                 print(f"will scrape starting from msg_id={last_id}")
 
-                iter_msgs = takeout.iter_messages(chat,
+                iter_msgs = tg_client.iter_messages(chat,
                                                   wait_time=0,
                                                   limit=int(os.getenv("TYPESENSE_BATCH_LOAD_MESSAGE_LIMIT")),
                                                   min_id=last_id
