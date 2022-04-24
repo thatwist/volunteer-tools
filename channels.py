@@ -1,76 +1,121 @@
-telegram = [
-Київ — @VolunteerTalksKyiv
-Бровари — @VolunteerTalksBrovary 
-Вінниця — @VolunteerTalksVIN 
-Жмеринка — @VolunteerTalksZmerynka 
-Дніпро — @VolunteerTalksDnipro 
-Кривий Ріг — @VolunteerTalksKryvyiRih 
-Кам’янське — @VolunteerTalksKamianske 
-Житомир — @VolunteerTalksZhytomyr 
-Запоріжжя — @VolunteerTalksZP 
-Мелітополь — @VolunteerTalksMelitopol 
-Івано-Франківськ — @VolunteerTalksIF 
-Ірпінь —  @VolunteerTalksIrpin
-Схід — @VolunteerTalksShid 
-Краматорськ — @VolunteerTalksKramatorsk 
-Маріуполь — @VolunteerTalksMariupol 
-Кропивницький — @VolunteerTalksKrp 
-Луцьк — @VolunteerTalksLutsk 
-Львів — @VolunteerTalksLviv 
-Дрогобич — @VolunteerTalksDrohobych 
-Миколаїв — @VolunteerTalksMykolaiv 
-Одеса — @VolunteerTalksOdesa
-Олександрія — @VolunteerTalksOleksandriia
-Острог — @VolunteerTalksOstroh 
-Полтава — @VolunteerTalksPoltava 
-Кременчук — @VolunteerTalksKremenchuk 
-Горішні Плавні — @VolunteerTalksGorishniPlavni 
-Рівне — @VolunteerTalksRivne 
-Суми — @VolunteerTalksSumy 
-Тернопіль — @VolunteerTalksTernopil 
-Ужгород — @VolunteerTalksUzhgorod 
-Харків — @VolunteerTalksKharkiv 
-Херсон — @VolunteerTalksKherson 
-Хмельницький — @VolunteerTalksKhmelnytskyi 
-Черкаси —@VolunteerTalksCherkasy 
-Чернівці — @VolunteerTalksChernivtsi 
-Чернігів — @VolunteerTalksChernihiv
+from model import Channel
+
+telegram_channels_new = [
+    Channel("tg", "andriysadovyi", "Андрій Садовий", None, None, None, "news", "львів"),
+    Channel("tg", "AngelsOfUkraine", "ангели", None, None, None, None, None),
+    Channel("tg", "ArmyNeeds", "армія", None, None, "amunition", None, None),
 ]
 
-"VolunteerTalksKyiv",
-"VolunteerTalksBrovary ",
-"VolunteerTalksVIN ",
-"VolunteerTalksZmerynka ",
-"VolunteerTalksDnipro ",
-"VolunteerTalksKryvyiRih ",
-"VolunteerTalksKamianske ",
-"VolunteerTalksZhytomyr ",
-"VolunteerTalksZP ",
-"VolunteerTalksMelitopol ",
-"VolunteerTalksIF ",
-"VolunteerTalksIrpin",
-"VolunteerTalksShid ",
-"VolunteerTalksKramatorsk ",
-"VolunteerTalksMariupol ",
-"VolunteerTalksKrp ",
-"VolunteerTalksLutsk ",
-"VolunteerTalksLviv ",
-"VolunteerTalksDrohobych ",
-"VolunteerTalksMykolaiv ",
-"VolunteerTalksOdesa",
-"VolunteerTalksOleksandriia",
-"VolunteerTalksOstroh ",
-"VolunteerTalksPoltava ",
-"VolunteerTalksKremenchuk ",
-"VolunteerTalksGorishniPlavni ",
-"VolunteerTalksRivne ",
-"VolunteerTalksSumy ",
-"VolunteerTalksTernopil ",
-"VolunteerTalksUzhgorod ",
-"VolunteerTalksKharkiv ",
-"VolunteerTalksKherson ",
-"VolunteerTalksKhmelnytskyi ",
-"VolunteerTalksCherkasy ",
-"VolunteerTalksChernivtsi ",
-"VolunteerTalksChernihiv",
+telegram_channels = [
+    "andriysadovyi", 
+    "AngelsOfUkraine",
+    "ArmyNeeds",
+    "avtodopomaga",
+    "bazuwork",
+    "boguslav_sos",
+    "burlv",
+    "chornamary", 
+    "DMYTROLUNIN", 
+    "DzvinokDruguBot", 
+    "evacuationukraine",
+    "gruz_200_rus", 
+    "help_cv",
+    "helptoukrainegroup",
+    "HelpTranskarpatiaLodging",
+    "helpvolonter",
+    "helpzakarpattia",
+    "Hotovyi_do_vsioho_bot",
+    "house_cv",
+    "huiiivoiiine",
+    "ihor_terekhov", 
+    "khersonskaODA", 
+    "khm_gov_ua", 
+    "khmelnytskaODA", 
+    "kiber_oborona_ua",
+    "kozytskyy_maksym_official", 
+    "lobbyx",
+    "lobbyxIT",
+    "luhanskaVTSA", 
+    "Lviv_help",
+    "lviv_stryi",
+    "mariupolrada", 
+    "medhelpinfo",
+    "medlogistic",
+    "nampodorozi_bot",
+    "neruhomistrus", 
+    "opitpomoshi",
+    "palyanycya_zp",
+    "pavlokyrylenko_donoda", 
+    "pick_up_ukraine",
+    "pidvezu_cv", 
+    "poshuk_znyklyh",
+    "realtor_cv", 
+    "rentCV", 
+    "rf200_now", 
+    "saveua_bot",
+    "shostka_volunteer_center",
+    "sm_vca", 
+    "stop_russian_war_bot",
+    "synegubov", 
+    "ternopilskaODA", 
+    "UAhelpinfo",
+    "uajobnow",
+    "ukr_emigration",
+    "UkrzalInfo",
+    "uzhvolunteer",
+    "v_tylu", 
+    "valanteruparus141",
+    "vin_sleep", 
+    "vinnytskaODA", 
+    "VollunteerUA",
+    "volonteri_ua",
+    "volonterniko",
+    "volontery_kh",
+    "volovodii",
+    "VolunteerCountry",
+    "VolunteersHotlineBot",
+    "VolunteerTalks",
+    "VolunteerTalksBrovary",
+    "VolunteerTalksCherkasy",
+    "VolunteerTalksChernihiv",
+    "VolunteerTalksChernivtsi",
+    "VolunteerTalksDnipro",
+    "VolunteerTalksDrohobych",
+    "VolunteerTalksGorishniPlavni",
+    "VolunteerTalksIF",
+    "VolunteerTalksIrpin", 
+    "VolunteerTalksKamianske",
+    "VolunteerTalksKharkiv",
+    "VolunteerTalksKherson",
+    "VolunteerTalksKhmelnytskyi",
+    "VolunteerTalksKramatorsk",
+    "VolunteerTalksKremenchuk",
+    "VolunteerTalksKrp",
+    "VolunteerTalksKryvyiRih",
+    "VolunteerTalksKyiv",
+    "VolunteerTalksLutsk",
+    "VolunteerTalksLviv",
+    "VolunteerTalksMariupol",
+    "VolunteerTalksMelitopol",
+    "VolunteerTalksMykolaiv",
+    "VolunteerTalksOdesa",
+    "VolunteerTalksOleksandriia", 
+    "VolunteerTalksOstroh", 
+    "VolunteerTalksPoltava",
+    "VolunteerTalksRivne",
+    # "VolunteerTalksRozdilna", # there is some problem with this one
+    "VolunteerTalksShid",
+    "VolunteerTalksSumy",
+    "VolunteerTalksTernopil",
+    "VolunteerTalksUzhgorod",
+    "VolunteerTalksVin",
+    "VolunteerTalksZhytomyr",
+    "VolunteerTalksZmerynka",
+    "VolunteerTalksZP",
+    "volynskaODA", 
+    "vszu_ua",
+    "winwin_realty",
+    "zak_help", 
+    # "zevolunteers", # same story
+    "Zhyvytskyy", 
 ]

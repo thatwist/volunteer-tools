@@ -30,12 +30,14 @@ class Post:
 
 @dataclass
 class Channel:
+  """channel"""
   platform: str
   ref: str # e.g. for telegram - id of the group, platform+ref = unique
   title: str
-  link: str # todo - this can be derived, method to override?
-  size: int # audience size, how many people, todo - this one is dynamic, so should be periodically updated
-  # meta
+  link: Optional[str] # todo - this can be derived, method to override?
+  size: Optional[int] # audience size, how many people, todo - this one is dynamic, so should be periodically updated
+  # meta info - default value for each post in the channel (if applicable)
   category: Optional[str] = None
   #tags: list[str] = []
+  post_type: Optional[str] = None
   geo: Optional[str] = None
